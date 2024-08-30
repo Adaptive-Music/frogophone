@@ -23,15 +23,33 @@ const int handL = A4;
 // Array to store button pins, in ascending tone order
 int pins[] = {buttonPinY, buttonPinP, buttonPinR, buttonPinO, buttonPinB, buttonPinG, handR, handL};
 
-// Array to store button states
+// Arrays to store button states
 bool oldState[] = {false, false, false, false, false, false, false, false};
 bool newState[] = {false, false, false, false, false, false, false, false};
 
-// Set initial key to C4 
+// Set initial key to C4 (Middle C)
 int key = 60;
 
-// Define notes to be played by each button with numbers representing how many semitones above tonic.
+// Define notes to be played by each button - numbers represent how many semitones above tonic.
 int notes[] = {0, 2, 4, 5, 7, 9, 11, 12};
+
+void keyChange(int newKey) {
+  // Check if key within valid range
+  if (newKey < 12 || newKey > 115) return;
+  // Store the new key
+  key = newKey;
+  // Play major chord for 1 second to indicate success
+  int majorChord[] = {-12, 0, 4, 7, 12};
+  for (int i : majorChord) {
+    int note = key + i;
+    MIDI.sendNoteOn(note, 127, 1);
+  }
+  delay(1000);
+  for (int i : majorChord) {
+    int note = key + i;
+    MIDI.sendNoteOff(note, 0, 1);
+  }
+}
 
 void setup() {
   Serial.begin(19200);
@@ -60,8 +78,11 @@ void loop() {
     }
   }
 
-  // TODO: Check for key change button presses here.
-
+  // Check for key change button presses
+  // Top three buttons - raise key
+  if (newState[0] && newState[1] && newState[2]) keyChange(key + 1);
+  // Bottom three buttons - lower key
+  else if (newState[3] && newState[4] && newState[5]) keyChange(key - 1);
 
   // Action button presses
     for (int i = 0; i < 8; i++) {
@@ -75,5 +96,5 @@ void loop() {
       // End note on release
       else MIDI.sendNoteOff(note, 0, 1); 
     }
-
+    delay(10);
 }
