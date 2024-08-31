@@ -10,9 +10,9 @@
 
   Button locations
 
-  7. LeftHand                        8. RightHand
-       1. Yellow    2. Purple   3. Red
-       4. Orange    5. Blue     6. Green
+  6. LeftHand                        7. RightHand
+       0. Yellow    1. Purple   2. Red
+       3. Orange    4. Blue     5. Green
 
 */
 
