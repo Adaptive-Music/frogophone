@@ -16,14 +16,13 @@ To play the C Major scale ascending, press the buttons in order from 1 to 8.
 ---
 
 ![Copy of 1](https://github.com/user-attachments/assets/42cf0422-3059-4f2b-85b6-b1032552f4bf)  
-*Mode, key and scale controls*
-
+*Mode, key and scale controlled with simultaneous button presses*
 
 ## Changing key and scale
 
 Key and scale can be changed as follows. With each successful change, a chord in the new key is played for one second.
 
-To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons pressed down for multiple steps.
+To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons held down for multiple steps.
 
 The scale can be toggled between major and minor by pressing buttons 1, 3, 4 and 6 at once.
 
