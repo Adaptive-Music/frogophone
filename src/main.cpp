@@ -15,13 +15,13 @@ const int buttonPinY = 2;  // red/green wire
 const int buttonPinP = 3;  // Purple Triangle
 const int buttonPinR = 4;  // Red Heart
 const int buttonPinO = 5;  // Orange Prism
-const int buttonPinB = 7;  // Blue Square
-const int buttonPinG = 6;  // Green Circle
-const int handR = A5;
+const int buttonPinB = 6;  // Blue Square
+const int buttonPinG = 7;  // Green Circle
 const int handL = A4;
+const int handR = A5;
 
 // Array to store button pins, in ascending tone order
-int pins[] = {buttonPinY, buttonPinP, buttonPinR, buttonPinO, buttonPinB, buttonPinG, handR, handL};
+int pins[] = {buttonPinY, buttonPinP, buttonPinR, buttonPinO, buttonPinB, buttonPinG, handL, handR};
 
 // Arrays to store button states
 bool oldState[] = {false, false, false, false, false, false, false, false};
@@ -38,6 +38,8 @@ void keyChange(int newKey) {
   if (newKey < 12 || newKey > 115) return;
   // Store the new key
   key = newKey;
+  // Stop all keys
+  for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
   // Play major chord for 1 second to indicate success
   int majorChord[] = {-12, 0, 4, 7, 12};
   for (int i : majorChord) {
