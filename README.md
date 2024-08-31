@@ -14,7 +14,7 @@ On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to
 To play the C Major scale ascending, press the buttons in order from 0 to 7.
 
 ## Changing key
-The key can be raised or lowered by one semitone at a time. To raise the key, press buttons 0, 1 and 2 simultaneously. To lower, press buttons 3, 4, 5. On key change, Frogophone will output a major chord in the new key for one second to indicate a successful key change. 
+The key can be raised or lowered by one semitone at a time. To raise the key, press the three upper buttons 1, 2 and 3 simultaneously. To lower, press the lower buttons 4, 5 and 6 simultaneously. On key change, Frogophone will output a major chord in the new key for one second to indicate a successful key change. 
 
 
 # Contributors
