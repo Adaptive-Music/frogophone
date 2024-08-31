@@ -37,7 +37,7 @@ int pins[] = {buttonPinY, buttonPinP, buttonPinR, buttonPinO, buttonPinB, button
 bool oldState[] = {false, false, false, false, false, false, false, false};
 bool newState[] = {false, false, false, false, false, false, false, false};
 
-// Set initial key to C4 (Middle C)
+// Define key - initially set to C4 (Middle C)
 int key = 60;
 
 // Store major/minor status
