@@ -44,7 +44,8 @@ void playChord(int tonic, bool isMajor) {
   // Stop all notes
   // TODO: Find more efficient way to do this.
   for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
-  int chord[] = {-12, 0, isMajor ? 4 : 3, 7, 12};
+
+  int chord[] = {-12, 0, isMajor ? 4 : 3, 7, 12, isMajor ? 16 : 15};
   for (int i : chord) {
     int note = key + i;
     MIDI.sendNoteOn(note, 127, 1);
