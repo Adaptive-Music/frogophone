@@ -2,10 +2,18 @@
 #include <MIDI.h>
 
 /*
+  Frogophone
+*/
+
+
+/*
+
   Button locations
-  7. LeftHand            8. RightHand
-  1. Yellow    2. Purple   3. Red
-  4. Orange    5. Blue     6. Green
+
+  7. LeftHand                        8. RightHand
+       1. Yellow    2. Purple   3. Red
+       4. Orange    5. Blue     6. Green
+
 */
 
 
@@ -39,18 +47,31 @@ bool major = true;
 int notes[] = {0, 2, 4, 5, 7, 9, 11, 12};
 
 
-void playChord(int tonic, bool isMajor) {
-  // Plays a chord for 1 second to indicate change of key or major/minor switch
+void playArpeggio(int tonic, bool isMajor) {
+  // Play arpeggiated chord for to indicate change of key or major/minor switch
+
+  int totalDuration = 1000;
+  int noteDuration = 100;
+
   // Stop all notes
   // TODO: Find more efficient way to do this.
   for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
 
+  int counter = 0;
   int chord[] = {-12, 0, isMajor ? 4 : 3, 7, 12, isMajor ? 16 : 15};
+
+  // Play notes of the chord, with short pause between each
   for (int i : chord) {
     int note = key + i;
     MIDI.sendNoteOn(note, 127, 1);
+    delay(noteDuration);
+    counter += noteDuration;
   }
-  delay(1000);
+
+  // Pause until total duration elapsed
+  delay(totalDuration - counter);
+
+  // End all chord notes
   for (int i : chord) {
     int note = key + i;
     MIDI.sendNoteOff(note, 0, 1);
@@ -64,7 +85,7 @@ void keyChange(int newKey) {
   // Store the new key
   key = newKey;
   // Play major chord for 1 second to indicate success
-  playChord(key, major);
+  playArpeggio(key, major);
 }
 
 void scaleChange() {
@@ -79,7 +100,7 @@ void scaleChange() {
     notes[5] = 8;
     notes[6] = 10;
   }
-  playChord(key, major);  
+  playArpeggio(key, major);  
 }
 
 void setup() {
