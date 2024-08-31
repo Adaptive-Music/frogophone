@@ -97,12 +97,17 @@ void loop() {
   for (int i = 0; i < 8; i++) newState[i] = digitalRead(pins[i]) == LOW;
 
   // Check for key/mode change button presses
-  // Top three buttons - raise key
+  // Top three buttons - raise key by semitone
   if (newState[0] && newState[1] && newState[2]) keyChange(key + 1);
-  // Bottom three buttons - lower key
+  // Raise key by octave
+  else if (newState[1] && newState[3] && newState[5]) keyChange(key + 12);
+  // Bottom three buttons - lower key by semitone
   else if (newState[3] && newState[4] && newState[5]) keyChange(key - 1);
-  // Four buttons - toggle between major/minor
+  // Lower key by octave
+  else if (newState[0] && newState[2] && newState[4]) keyChange(key - 12);
+  // Four buttons - toggle between major/minor scales
   else if (newState[0] && newState[2] && newState[3] && newState[5]) scaleChange();
+  // TODO: Both hand buttons - cycle through modes
 
   // Action button presses
   for (int i = 0; i < 8; i++) {
