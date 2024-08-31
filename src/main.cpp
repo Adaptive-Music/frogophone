@@ -13,14 +13,14 @@
 MIDI_CREATE_DEFAULT_INSTANCE();
 
 // Define button pins 
-const int buttonPinY = 2;  // red/green wire
+const int buttonPinY = 2;  // Yellow Star
 const int buttonPinP = 3;  // Purple Triangle
 const int buttonPinR = 4;  // Red Heart
 const int buttonPinO = 5;  // Orange Prism
 const int buttonPinB = 6;  // Blue Square
 const int buttonPinG = 7;  // Green Circle
-const int handL = A4;
-const int handR = A5;
+const int handL = A4;      // Night time
+const int handR = A5;      // Daytime
 
 // Array to store button pins, in ascending tone order
 int pins[] = {buttonPinY, buttonPinP, buttonPinR, buttonPinO, buttonPinB, buttonPinG, handL, handR};
