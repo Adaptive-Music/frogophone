@@ -53,11 +53,11 @@ void playArpeggio(int tonic, bool isMajor) {
   int totalDuration = 1000;
   int noteDuration = 70;
 
-  // Stop all notes
+  // Stop all currently playing notes
   // TODO: Find more efficient way to do this.
   for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
 
-  int counter = 0;
+  int timeElapsed = 0;
   int chord[] = {-12, 0, isMajor ? 4 : 3, 7, 12, isMajor ? 16 : 15};
 
   // Play notes of the chord, with short pause between each
@@ -65,11 +65,11 @@ void playArpeggio(int tonic, bool isMajor) {
     int note = key + i;
     MIDI.sendNoteOn(note, 127, 1);
     delay(noteDuration);
-    counter += noteDuration;
+    timeElapsed += noteDuration;
   }
 
   // Pause until total duration elapsed
-  delay(totalDuration - counter);
+  delay(totalDuration - timeElapsed);
 
   // End all chord notes
   for (int i : chord) {
@@ -84,9 +84,10 @@ void keyChange(int newKey) {
   if (newKey < 12 || newKey > 115) return;
   // Store the new key
   key = newKey;
-  // Play major chord for 1 second to indicate success
+  // Play arpeggio to indicate success
   playArpeggio(key, major);
 }
+
 
 void scaleChange() {
   // Toggle between major and minor scales
@@ -103,6 +104,7 @@ void scaleChange() {
   playArpeggio(key, major);  
 }
 
+
 void setup() {
   Serial.begin(19200);
 
@@ -112,6 +114,7 @@ void setup() {
   // Start MIDI communication
   MIDI.begin(MIDI_CHANNEL_OMNI);
 }
+
 
 void loop() {
   // Read the state of the pushbutton values
