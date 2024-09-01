@@ -51,7 +51,7 @@ void playArpeggio(int tonic, bool isMajor) {
   // Play arpeggiated chord for to indicate change of key or major/minor switch
 
   int totalDuration = 1000;
-  int noteDuration = 100;
+  int noteDuration = 70;
 
   // Stop all notes
   // TODO: Find more efficient way to do this.
@@ -131,7 +131,8 @@ void loop() {
   // TODO: Both hand buttons - cycle through modes
 
   // Action button presses
-  for (int i = 0; i < 8; i++) {
+  else {
+    for (int i = 0; i < 8; i++) {
     // No action required if button state unchanged
     if (oldState[i] == newState[i]) continue;
     // Update oldState with changed value
@@ -141,6 +142,7 @@ void loop() {
     if (newState[i]) MIDI.sendNoteOn(note, 127, 1);
     // End note on release
     else MIDI.sendNoteOff(note, 0, 1); 
+    }
   }
   // Give board a rest - is this needed?
   delay(20);
