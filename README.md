@@ -26,6 +26,8 @@ Key and scale can be changed as follows. With each successful change, a chord in
 
 To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons held down for multiple steps.
 
+To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lower it by one octave, press the buttons 1, 3 and 5 simultaneously.
+
 The scale can be toggled between major and minor by pressing buttons 1, 3, 4 and 6 at once.
 
 
