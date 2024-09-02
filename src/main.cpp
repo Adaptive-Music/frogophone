@@ -44,21 +44,33 @@ int key = 60;
 bool major = true;
 
 // Define notes to be played by each button - numbers represent how many semitones above tonic.
-int notes[] = {0, 2, 4, 5, 7, 9, 11, 12};
+int notes[][8] = {
+  {0, 2, 4, 5, 7, 9, 11, 12},   // Major
+  {0, 2, 3, 5, 7, 8, 10, 12},   // Minor
+  {0, 3, 5, 6, 7, 10, 12, 15},  // Blues
+};
+
+int currentScale = 0;
 
 
-void playArpeggio(int tonic, bool isMajor) {
-  // Play arpeggiated chord for to indicate change of key or major/minor switch
+void silence() {
+  // Stop all currently playing notes
+  // TODO: Find more efficient way to do this.
+  for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
+}
+
+
+void playArpeggio() {
+  // Play arpeggiated chord for to indicate change of key or scale
+  // TODO: update to handle blues
 
   int totalDuration = 1000;
   int noteDuration = 70;
 
-  // Stop all currently playing notes
-  // TODO: Find more efficient way to do this.
-  for (int i = 0; i < 128; i++) MIDI.sendNoteOff(i, 0, 1);
-
   int timeElapsed = 0;
-  int chord[] = {-12, 0, isMajor ? 4 : 3, 7, 12, isMajor ? 16 : 15};
+  int chord[] = {-12, 0, major ? 4 : 3, 7, 12, major ? 16 : 15};
+
+  silence();
 
   // Play notes of the chord, with short pause between each
   for (int i : chord) {
@@ -85,23 +97,15 @@ void keyChange(int newKey) {
   // Store the new key
   key = newKey;
   // Play arpeggio to indicate success
-  playArpeggio(key, major);
+  playArpeggio();
 }
 
 
 void scaleChange() {
-  // Toggle between major and minor scales
-  major = !major;
-  if (major) {
-    notes[2] = 4;
-    notes[5] = 9;
-    notes[6] = 11;
-  } else {
-    notes[2] = 3;
-    notes[5] = 8;
-    notes[6] = 10;
-  }
-  playArpeggio(key, major);  
+  // Cycle through scale options
+  currentScale = (currentScale + 1) % sizeof(notes);
+  major = currentScale == 0; //TODO: Remove after updating arpeggio
+  playArpeggio();  
 }
 
 
@@ -140,7 +144,7 @@ void loop() {
     if (oldState[i] == newState[i]) continue;
     // Update oldState with changed value
     oldState[i] = newState[i];
-    int note = key + notes[i];
+    int note = key + notes[currentScale][i];
     // Play note if pressed
     if (newState[i]) MIDI.sendNoteOn(note, 127, 1);
     // End note on release
