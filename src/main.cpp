@@ -52,6 +52,12 @@ int notes[][8] = {
 
 int currentScale = 0;
 
+// Define arpeggio notes for each scale
+int arpeggioNotes[][6] = {
+  {-12, 0, 4, 7, 12, 16},     // Major
+  {-12, 0, 3, 7, 12, 15},     // Minor
+  {-12, 0, 3, 7, 10, 15},     // Blues - Minor 7th
+};
 
 void silence() {
   // Stop all currently playing notes
@@ -68,12 +74,11 @@ void playArpeggio() {
   int noteDuration = 70;
 
   int timeElapsed = 0;
-  int chord[] = {-12, 0, major ? 4 : 3, 7, 12, major ? 16 : 15};
 
   silence();
 
   // Play notes of the chord, with short pause between each
-  for (int i : chord) {
+  for (int i : arpeggioNotes[currentScale]) {
     int note = key + i;
     MIDI.sendNoteOn(note, 127, 1);
     delay(noteDuration);
@@ -84,7 +89,7 @@ void playArpeggio() {
   delay(totalDuration - timeElapsed);
 
   // End all chord notes
-  for (int i : chord) {
+  for (int i : arpeggioNotes[currentScale]) {
     int note = key + i;
     MIDI.sendNoteOff(note, 0, 1);
   }
@@ -93,7 +98,7 @@ void playArpeggio() {
 
 void keyChange(int newKey) {
   // Check if key within valid range
-  if (newKey < 12 || newKey > 115) return;
+  if (newKey < 12 || newKey > 112) return;
   // Store the new key
   key = newKey;
   // Play arpeggio to indicate success
@@ -103,8 +108,7 @@ void keyChange(int newKey) {
 
 void scaleChange() {
   // Cycle through scale options
-  currentScale = (currentScale + 1) % sizeof(notes);
-  major = currentScale == 0; //TODO: Remove after updating arpeggio
+  currentScale = (currentScale + 1) % (sizeof(notes) / sizeof(notes[0]));
   playArpeggio();  
 }
 
