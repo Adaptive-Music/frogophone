@@ -68,11 +68,9 @@ void silence() {
 
 void playArpeggio() {
   // Play arpeggiated chord for to indicate change of key or scale
-  // TODO: update to handle blues
 
   int totalDuration = 1000;
   int noteDuration = 70;
-
   int timeElapsed = 0;
 
   silence();
@@ -98,7 +96,7 @@ void playArpeggio() {
 
 void keyChange(int newKey) {
   // Check if key within valid range
-  if (newKey < 12 || newKey > 112) return;
+  if (newKey < 12 || newKey > 111) return;
   // Store the new key
   key = newKey;
   // Play arpeggio to indicate success
