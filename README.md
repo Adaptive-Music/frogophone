@@ -30,7 +30,7 @@ To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lowe
 
 The scale can be cycled between major, minor, and blues scales by pressing buttons 1, 3, 4 and 6 at once.
 
-The mode can be toggled between single note and power chord mode by pressing the two hand buttons at the same time.
+The mode can be toggled between single note and power chord mode by pressing the two hand buttons at the same time. Each mode change is accompanied by a the base note being played for one second.
 
 
 # Contributors

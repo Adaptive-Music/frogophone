@@ -122,7 +122,13 @@ void changeScale() {
 
 
 void changeMode() {
+  // Cycle through chord modes
   currentMode = (currentMode + 1) % numModes;
+  // Play a note in the new mode for one second
+  silence();
+  playOrEndNotes(0, true);
+  delay(1000);
+  playOrEndNotes(0, false);
 }
 
 
