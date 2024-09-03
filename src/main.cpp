@@ -121,17 +121,6 @@ void changeScale() {
 }
 
 
-void changeMode() {
-  // Cycle through chord modes
-  currentMode = (currentMode + 1) % numModes;
-  // Play a note in the new mode for one second
-  silence();
-  playOrEndNotes(0, true);
-  delay(1000);
-  playOrEndNotes(0, false);
-}
-
-
 void playOrEndNotes(int i, bool noteOn) {
   notes.clear();
   int rootNote = key + scales[currentScale][i];
@@ -151,6 +140,17 @@ void playOrEndNotes(int i, bool noteOn) {
     if (noteOn) MIDI.sendNoteOn(note, 127, 1);
     else MIDI.sendNoteOff(note, 0, 1);
   } 
+}
+
+
+void changeMode() {
+  // Cycle through chord modes
+  currentMode = (currentMode + 1) % numModes;
+  // Play a note in the new mode for one second
+  silence();
+  playOrEndNotes(0, true);
+  delay(1000);
+  playOrEndNotes(0, false);
 }
 
 
@@ -190,7 +190,6 @@ void loop() {
     if (oldState[i] == newState[i]) continue;
     // Update oldState with changed value
     oldState[i] = newState[i];
-    int note = key + scales[currentScale][i];
     // Play/end note if pressed/released
     playOrEndNotes(i, newState[i]);
     }
