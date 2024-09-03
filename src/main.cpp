@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <vector>
 #include <MIDI.h>
 
 /*
@@ -44,7 +45,7 @@ int key = 60;
 bool major = true;
 
 // Define notes to be played by each button - numbers represent how many semitones above tonic.
-int notes[][8] = {
+int scales[][8] = {
   {0, 2, 4, 5, 7, 9, 11, 12},   // Major
   {0, 2, 3, 5, 7, 8, 10, 12},   // Minor
   {0, 3, 5, 6, 7, 10, 12, 15},  // Blues
@@ -52,12 +53,21 @@ int notes[][8] = {
 
 int currentScale = 0;
 
+// Define current mode - 0: Single note, 1: Power chord
+int currentMode = 0;
+
+// Number of available modes
+int numModes = 2;
+
 // Define arpeggio notes for each scale
 int arpeggioNotes[][6] = {
   {-12, 0, 4, 7, 12, 16},     // Major
   {-12, 0, 3, 7, 12, 15},     // Minor
   {-12, 0, 3, 7, 10, 15},     // Blues - Minor 7th
 };
+
+// Vector to store chord's notes for playing/ending
+std::vector<int> notes;
 
 void silence() {
   // Stop all currently playing notes
@@ -67,7 +77,7 @@ void silence() {
 
 
 void playArpeggio() {
-  // Play arpeggiated chord for to indicate change of key or scale
+  // Play arpeggiated chord to indicate change of key or scale
 
   int totalDuration = 1000;
   int noteDuration = 70;
@@ -94,7 +104,7 @@ void playArpeggio() {
 }
 
 
-void keyChange(int newKey) {
+void changeKey(int newKey) {
   // Check if key within valid range
   if (newKey < 12 || newKey > 111) return;
   // Store the new key
@@ -104,10 +114,37 @@ void keyChange(int newKey) {
 }
 
 
-void scaleChange() {
+void changeScale() {
   // Cycle through scale options
-  currentScale = (currentScale + 1) % (sizeof(notes) / sizeof(notes[0]));
+  currentScale = (currentScale + 1) % (sizeof(scales) / sizeof(scales[0]));
   playArpeggio();  
+}
+
+
+void changeMode() {
+  currentMode = (currentMode + 1) % numModes;
+}
+
+
+void playOrEndNotes(int i, bool noteOn) {
+  notes.clear();
+  int rootNote = key + scales[currentScale][i];
+  // Power chord: I, V, VIII
+  if (currentMode == 1) {
+    notes = {rootNote - 12, rootNote - 5, rootNote};
+  }
+
+  // TODO: Other chord mode(s) here
+
+  // Default to single note
+  else {
+    notes = {rootNote};
+  }
+  // Play or end each note
+  for (int note : notes) {
+    if (noteOn) MIDI.sendNoteOn(note, 127, 1);
+    else MIDI.sendNoteOff(note, 0, 1);
+  } 
 }
 
 
@@ -126,31 +163,30 @@ void loop() {
   // Read the state of the pushbutton values
   for (int i = 0; i < 8; i++) newState[i] = digitalRead(pins[i]) == LOW;
 
-  // Check for key/mode change button presses
+  // Check for key/scale/mode change combo button presses
   // Top three buttons - raise key by semitone
-  if (newState[0] && newState[1] && newState[2]) keyChange(key + 1);
+  if (newState[0] && newState[1] && newState[2]) changeKey(key + 1);
   // Raise key by octave
-  else if (newState[1] && newState[3] && newState[5]) keyChange(key + 12);
+  else if (newState[1] && newState[3] && newState[5]) changeKey(key + 12);
   // Bottom three buttons - lower key by semitone
-  else if (newState[3] && newState[4] && newState[5]) keyChange(key - 1);
+  else if (newState[3] && newState[4] && newState[5]) changeKey(key - 1);
   // Lower key by octave
-  else if (newState[0] && newState[2] && newState[4]) keyChange(key - 12);
+  else if (newState[0] && newState[2] && newState[4]) changeKey(key - 12);
   // Four buttons - toggle between major/minor scales
-  else if (newState[0] && newState[2] && newState[3] && newState[5]) scaleChange();
-  // TODO: Both hand buttons - cycle through modes
+  else if (newState[0] && newState[2] && newState[3] && newState[5]) changeScale();
+  // Both hand buttons - cycle through modes
+  else if (newState[6] && newState[7]) changeMode();
 
-  // Action button presses
+  // Action button press/release if change detected
   else {
     for (int i = 0; i < 8; i++) {
     // No action required if button state unchanged
     if (oldState[i] == newState[i]) continue;
     // Update oldState with changed value
     oldState[i] = newState[i];
-    int note = key + notes[currentScale][i];
-    // Play note if pressed
-    if (newState[i]) MIDI.sendNoteOn(note, 127, 1);
-    // End note on release
-    else MIDI.sendNoteOff(note, 0, 1); 
+    int note = key + scales[currentScale][i];
+    // Play/end note if pressed/released
+    playOrEndNotes(i, newState[i]);
     }
   }
   // Give board a rest - is this needed?
