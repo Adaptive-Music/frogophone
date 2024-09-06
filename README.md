@@ -27,9 +27,9 @@ To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simul
 
 To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lower it by one octave, press the buttons 1, 3 and 5 simultaneously.
 
-The scale can be cycled between major, minor, and blues scales by pressing buttons 1, 3, 4 and 6 at once.
+The scale can be cycled between major, minor, and blues scales by pressing buttons the four buttons 1, 3, 4 and 6 at once.
 
-The mode can be cycled between single note, power chord, and triad mode by pressing the two hand buttons at the same time. Each mode change is accompanied by a the base note/chord being played for one second.
+The mode can be cycled between single note, power chord, and triad mode by pressing any other four button combination at the same time. Each mode change is accompanied by a the base note/chord being played for one second.
 
 
 # Contributors
