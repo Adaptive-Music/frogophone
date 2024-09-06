@@ -29,12 +29,16 @@ To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lowe
 
 The scale can be cycled between major, minor, and blues scales by pressing buttons the four buttons 1, 3, 4 and 6 at once.
 
-The mode can be cycled between single note, power chord, and triad mode by pressing any other four button combination at the same time. Each mode change is accompanied by a the base note/chord being played for one second.
+The mode can be cycled between single note, power chord, and triad chord mode by pressing any other four button combination at the same time. Each mode change is accompanied by the base note/chord being played for one second. Note: Triad chord mode does not work when blues scale is selected, and outputs single notes instead.
 
 
 # Contributors
 
 #### [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS)
-Physical build and initial Arduino code.
+Physical build, initial Arduino code.
 
-#### [Vincent Ekpanyaskun](https://github.com/vekp)
+#### [Vincent Ekpanyaskun](https://github.com/vekp),
+Multiple input detection, key change, scale change, power chord mode.
+
+####  [Warren Kuah](https://github.com/W-Kuah)
+Triad chord mode.
