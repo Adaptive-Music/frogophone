@@ -48,7 +48,13 @@ int scales[][8] = {
   {0, 3, 5, 6, 7, 10, 12, 15},  // Blues
 };
 
+// Currently selected scale - 0: Major, 1: Minor, 2: Blues
 int currentScale = 0;
+
+// Constants to define scales
+const int MAJOR = 0;
+const int MINOR = 1;
+const int BLUES = 2;
 
 // Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
 int currentMode = 0;
@@ -132,7 +138,7 @@ void playOrEndNotes(int i, bool noteOn) {
   } 
 
   // Triad chords: Major (0-4-7), Minor (0-3-7), and Diminished (0-3-6)
-  else if (currentMode == TRIAD_CHORD) {
+  else if (currentMode == TRIAD_CHORD && currentScale != BLUES) {
     int thirdPos = (i + 2) % 7;
     int fifthPos = (i + 4) % 7;
 
@@ -177,22 +183,26 @@ void setup() {
 
 
 void loop() {
+  int buttonCount = 0;
   // Read the state of the pushbutton values
-  for (int i = 0; i < 8; i++) newState[i] = digitalRead(pins[i]) == LOW;
+  for (int i = 0; i < 8; i++) {
+    newState[i] = digitalRead(pins[i]) == LOW;
+    if (newState[i]) buttonCount++;
+    }
 
   // Check for key/scale/mode change combo button presses
+  // Four buttons - toggle between major/minor scales
+  if (newState[0] && newState[2] && newState[3] && newState[5]) changeScale();
+  // Other four button combo - cycle through modes
+  else if (buttonCount > 3) changeMode();
   // Top three buttons - raise key by semitone
-  if (newState[0] && newState[1] && newState[2]) changeKey(key + 1);
+  else if (newState[0] && newState[1] && newState[2]) changeKey(key + 1);
   // Raise key by octave
   else if (newState[1] && newState[3] && newState[5]) changeKey(key + 12);
   // Bottom three buttons - lower key by semitone
   else if (newState[3] && newState[4] && newState[5]) changeKey(key - 1);
   // Lower key by octave
   else if (newState[0] && newState[2] && newState[4]) changeKey(key - 12);
-  // Four buttons - toggle between major/minor scales
-  else if (newState[0] && newState[2] && newState[3] && newState[5]) changeScale();
-  // Both hand buttons - cycle through modes
-  else if (newState[6] && newState[7]) changeMode();
 
   // Action button press/release if change detected
   else {
@@ -205,4 +215,6 @@ void loop() {
     playOrEndNotes(i, newState[i]);
     }
   }
+  // Delay for debouncing
+  delay(10);
 }
