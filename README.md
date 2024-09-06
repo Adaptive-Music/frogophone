@@ -17,18 +17,20 @@ To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
 ---
 
-![Controls](https://github.com/user-attachments/assets/42cf0422-3059-4f2b-85b6-b1032552f4bf)  
-*Mode, key and scale controlled with simultaneous button presses*
+![Frogophone controls](https://github.com/user-attachments/assets/9ce84724-ceb9-41ad-8294-59e6465f73a2)  
+*Key, scale and mode controlled with simultaneous button press combinations*
 
 ## Changing key and scale
 
-Key and scale can be changed as follows. With each successful change, a chord in the new key is played for one second.
+Key and scale can be changed as follows. Each successful change is signalled with an arpeggiated chord in the new key, played for one second.
 
 To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons held down for multiple steps.
 
 To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lower it by one octave, press the buttons 1, 3 and 5 simultaneously.
 
-The scale can be toggled between major and minor by pressing buttons 1, 3, 4 and 6 at once.
+The scale can be cycled between major, minor, and blues scales by pressing buttons 1, 3, 4 and 6 at once.
+
+The mode can be toggled between single note and power chord mode by pressing the two hand buttons at the same time. Each mode change is accompanied by a the base note being played for one second.
 
 
 # Contributors
