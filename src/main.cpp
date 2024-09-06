@@ -53,11 +53,11 @@ int scales[][8] = {
 
 int currentScale = 0;
 
-// Define current mode - 0: Single note, 1: Power chord
+// Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
 int currentMode = 0;
 
 // Number of available modes
-int numModes = 2;
+int numModes = 3;
 
 // Define arpeggio notes for each scale
 int arpeggioNotes[][6] = {
@@ -124,12 +124,21 @@ void changeScale() {
 void playOrEndNotes(int i, bool noteOn) {
   notes.clear();
   int rootNote = key + scales[currentScale][i];
-  // Power chord: I, V, VIII
+  // Power chord: I, V, VIII (0-7-12)
   if (currentMode == 1) {
     notes = {rootNote - 12, rootNote - 5, rootNote};
-  }
+  } 
 
-  // TODO: Other chord mode(s) here
+  // Triad chords: Major (0-4-7), Minor (0-3-7), and Diminished (0-3-6)
+  else if (currentMode == 2) {
+    int thirdPos = (i + 2) % 7;
+    int fifthPos = (i + 4) % 7;
+
+    int thirdNote = i > thirdPos ? key + scales[currentScale][thirdPos] + 12 : key + scales[currentScale][thirdPos];
+    int fifthNote = i > fifthPos ? key + scales[currentScale][fifthPos] + 12 : key + scales[currentScale][fifthPos];
+    
+    notes = {rootNote - 12, thirdNote - 12, fifthNote - 12, rootNote};
+  }
 
   // Default to single note
   else {
