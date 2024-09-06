@@ -41,9 +41,6 @@ bool newState[] = {false, false, false, false, false, false, false, false};
 // Define key - initially set to C4 (Middle C)
 int key = 60;
 
-// Store major/minor status
-bool major = true;
-
 // Define notes to be played by each button - numbers represent how many semitones above tonic.
 int scales[][8] = {
   {0, 2, 4, 5, 7, 9, 11, 12},   // Major
@@ -58,6 +55,11 @@ int currentMode = 0;
 
 // Number of available modes
 int numModes = 3;
+
+// Constants to define chord modes
+const int SINGLE_NOTE = 0;
+const int POWER_CHORD = 1;
+const int TRIAD_CHORD = 2;
 
 // Define arpeggio notes for each scale
 int arpeggioNotes[][6] = {
@@ -125,12 +127,12 @@ void playOrEndNotes(int i, bool noteOn) {
   notes.clear();
   int rootNote = key + scales[currentScale][i];
   // Power chord: I, V, VIII (0-7-12)
-  if (currentMode == 1) {
+  if (currentMode == POWER_CHORD) {
     notes = {rootNote - 12, rootNote - 5, rootNote};
   } 
 
   // Triad chords: Major (0-4-7), Minor (0-3-7), and Diminished (0-3-6)
-  else if (currentMode == 2) {
+  else if (currentMode == TRIAD_CHORD) {
     int thirdPos = (i + 2) % 7;
     int fifthPos = (i + 4) % 7;
 
@@ -203,6 +205,4 @@ void loop() {
     playOrEndNotes(i, newState[i]);
     }
   }
-  // Give board a rest - is this needed?
-  delay(20);
 }
