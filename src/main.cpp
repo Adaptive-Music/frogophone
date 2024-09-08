@@ -125,8 +125,8 @@ void changeKey(int newKey) {
 void changeScale() {
   // Cycle through scale options
   currentScale = (currentScale + 1) % (sizeof(scales) / sizeof(scales[0]));
-  if (currentScale == PENTATONIC) {
-    changeMode();
+  if (currentScale == PENTATONIC & currentMode==TRIAD_CHORD) {
+    currentMode == SINGLE_NOTE;
   }
   playArpeggio();  
 }
@@ -165,10 +165,8 @@ void playOrEndNotes(int i, bool noteOn) {
 
 void changeMode() {
   // Cycle through chord modes
-  currentMode = (currentMode + 1) % numModes;
-  if (currentMode == TRIAD_CHORD & currentScale == PENTATONIC) {
-    changeMode();
-  }
+  currentMode = currentScale == PENTATONIC ? (currentMode + 1) % 2 : (currentMode + 1) % numModes;
+
   // Play a note in the new mode for one second
   silence();
   playOrEndNotes(0, true);
