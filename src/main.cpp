@@ -45,16 +45,16 @@ int key = 60;
 int scales[][8] = {
   {0, 2, 4, 5, 7, 9, 11, 12},   // Major
   {0, 2, 3, 5, 7, 8, 10, 12},   // Minor
-  {0, 3, 5, 7, 10, 12, 15, 17},  // Pentatonic
+  {0, 3, 5, 6, 7, 10, 12, 15},  // Blues
 };
 
-// Currently selected scale - 0: Major, 1: Minor, 2: Pentatonic
+// Currently selected scale - 0: Major, 1: Minor, 2: Blues
 int currentScale = 0;
 
 // Constants to define scales
 const int MAJOR = 0;
 const int MINOR = 1;
-const int PENTATONIC = 2;
+const int BLUES = 2;
 
 // Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
 int currentMode = 0;
@@ -71,7 +71,7 @@ const int TRIAD_CHORD = 2;
 int arpeggioNotes[][6] = {
   {-12, 0, 4, 7, 12, 16},     // Major
   {-12, 0, 3, 7, 12, 15},     // Minor
-  {-12, 0, 3, 7, 10, 15},     // Pentatonic - Minor 7th
+  {-12, 0, 3, 7, 10, 15},     // Blues - Minor 7th
 };
 
 // Vector to store chord's notes for playing/ending
@@ -125,9 +125,6 @@ void changeKey(int newKey) {
 void changeScale() {
   // Cycle through scale options
   currentScale = (currentScale + 1) % (sizeof(scales) / sizeof(scales[0]));
-  if (currentScale == PENTATONIC & currentMode==TRIAD_CHORD) {
-    currentMode == SINGLE_NOTE;
-  }
   playArpeggio();  
 }
 
@@ -141,7 +138,7 @@ void playOrEndNotes(int i, bool noteOn) {
   } 
 
   // Triad chords: Major (0-4-7), Minor (0-3-7), and Diminished (0-3-6)
-  else if (currentMode == TRIAD_CHORD && currentScale != PENTATONIC) {
+  else if (currentMode == TRIAD_CHORD && currentScale != BLUES) {
     int thirdPos = (i + 2) % 7;
     int fifthPos = (i + 4) % 7;
 
@@ -165,8 +162,7 @@ void playOrEndNotes(int i, bool noteOn) {
 
 void changeMode() {
   // Cycle through chord modes
-  currentMode = currentScale == PENTATONIC ? (currentMode + 1) % 2 : (currentMode + 1) % numModes;
-
+  currentMode = (currentMode + 1) % numModes;
   // Play a note in the new mode for one second
   silence();
   playOrEndNotes(0, true);
