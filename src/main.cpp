@@ -126,7 +126,7 @@ void changeScale() {
   // Cycle through scale options
   currentScale = (currentScale + 1) % (sizeof(scales) / sizeof(scales[0]));
   if (currentScale == PENTATONIC & currentMode==TRIAD_CHORD) {
-    currentMode == SINGLE_NOTE;
+    currentMode = SINGLE_NOTE;
   }
   playArpeggio();  
 }
