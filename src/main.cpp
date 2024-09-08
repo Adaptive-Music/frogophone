@@ -72,7 +72,7 @@ int arpeggioNotes[][6] = {
   {-12, 0, 4, 7, 12, 16},     // Major
   {-12, 0, 3, 7, 12, 15},     // Minor
   {-12, 0, 3, 7, 10, 15},     // Pentatonic - Minor 7th
-}
+};
 
 // Vector to store chord's notes for playing/ending
 std::vector<int> notes;
