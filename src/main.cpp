@@ -64,8 +64,8 @@ int numModes = 3;
 
 // Constants to define chord modes
 const int SINGLE_NOTE = 0;
-const int POWER_CHORD = 1;
-const int TRIAD_CHORD = 2;
+const int TRIAD_CHORD = 1;
+const int POWER_CHORD = 2;
 
 // Define arpeggio notes for each scale
 int arpeggioNotes[][6] = {
@@ -164,8 +164,9 @@ void playOrEndNotes(int i, bool noteOn) {
 
 
 void changeMode() {
-  // Cycle through chord modes
-  currentMode = currentScale == PENTATONIC ? (currentMode + 1) % 2 : (currentMode + 1) % numModes;
+  // Cycle through chord modes. 
+  // If the current scale is Pentatonic AND the current mode is single note, skip to the power chord .
+  currentMode = (currentScale == PENTATONIC) & (currentMode == SINGLE_NOTE) ? POWER_CHORD : (currentMode + 1) % numModes;
 
   // Play a note in the new mode for one second
   silence();
