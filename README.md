@@ -1,9 +1,28 @@
 # Frogophone
 
-Frogophone is a MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
+Frogophone is a MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their two-day [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
 
 Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered by the eight buttons on the toy's hands and belly.
 
+## Features
+
+### MIDI Output
+* Each of the eight buttons corresponds to a note in the selected scale, initially set to C major (C4 - C5).
+* Pressing down on a button sends a **NOTE ON** MIDI message, with a velocity of 127, on channel 1.
+* Releasing the button sends a corresponding **NOTE OFF** with velocity 0.
+* Allows for harmonic output with multiple simultaneous button presses.
+
+### Key and Scale Selection
+* The key can be raised or lowered, either by semitone or by octave, using special 3-button combinations as outlined below.
+* The scale can be cycled through major, minor and pentatonic modes, using the 4-button combination below.
+* This restrict's the instrument's output to valid notes in the selected key/scale.
+* No requirement for user to possess musical theory knowledge to know which buttons to press to avoid dissonant sounds - there are no incorrect notes.
+* Promotes inclusion when used in ensembles as it can be set to play in tune with any song.
+
+### Chord Mode Selection
+* The instrument can be cycled between single note, triad chord, and power chord mode with the 4-button combination below.
+* Allows for a wide range of harmonious, suitable
+// TODO FINISH THIS!!
 
 ## Instructions
 
