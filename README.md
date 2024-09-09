@@ -20,9 +20,12 @@ Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered 
 * Promotes inclusion when used in ensembles as it can be set to play in tune with any song.
 
 ### Chord Mode Selection
-* The instrument can be cycled between single note, triad chord, and power chord mode with the 4-button combination below.
-* Allows for a wide range of harmonious, suitable
-// TODO FINISH THIS!!
+* The instrument can be cycled between different chord modes with the 4-button combination below, giving the instrument greater versatility.
+    * **Single note mode:** Standard mode, with each button playing one note.
+    * **Triad chord mode:** Plays a triad chord with each button press, creating a full, rich harmony easily.
+    * **Power chord mode:** Power chords, when used with a suggested rock guitar setting on the synthesiser, can be used to produce powerful riffs.
+* Constructing chords typically requires solid music theory experience to determine the correct notes that belong together. Performing a chord would also normally require a high degree of dexterity to hit multiple buttons correctly at once.
+* Frogophone's chord mode makes playing chords more accessible for people with disabilities who may struggle with applying both the theoretical knowledge and physical coordination required to perform a chord, as the software works out the correct notes and plays them all at once, with just a single button press.
 
 ## Instructions
 
@@ -38,26 +41,43 @@ To play the C Major scale ascending, press the buttons in order from 1 to 8.
 ![Frogophone controls](https://github.com/user-attachments/assets/3d467442-fafe-4c6f-8fd6-7beb1f82d520)  
 *Key, scale and chord mode controlled with simultaneous button press combinations*
 
-## Changing key and scale
+## Changing key, scale and mode
 
-Key and scale can be changed as follows. Each successful change is signalled with an arpeggiated chord in the new key, played for one second.
+Key, scale and mode can be changed as follows. For successful key and scale changes, this is signalled with an arpeggiated chord in the new key, played for one second, while chord mode changes are signalled by the base note/chord being played for one second.
+
+The special three/four button combinations are intentionally difficult to press, and intended to be used by the user's carer. This is to minimise the chance of the user accidentally triggering an unintended key/scale/mode change.
+
+### Key
 
 To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons held down for multiple steps.
 
 To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lower it by one octave, press the buttons 1, 3 and 5 simultaneously.
 
-The scale can be cycled between major, minor, and blues scales by pressing buttons the four buttons 1, 3, 4 and 6 at once.
+### Scale
 
-The mode can be cycled between single note, power chord, and triad chord mode by pressing any other four button combination at the same time. Each mode change is accompanied by the base note/chord being played for one second. Note: Triad chord mode does not work when blues scale is selected, and outputs single notes instead.
+The scale can be cycled between major, minor, and pentatonic scales by pressing buttons the four buttons 1, 3, 4 and 6 at once.
 
+### Mode
 
-# Contributors
+The mode can be cycled between single note, triad chord, and power chord mode by pressing any other four button combination at the same time. Each mode change is accompanied by the base note/chord being played for one second. Note: Triad chord mode is not valid when pentatonic scale is selected, so it is skipped.
+
+## How to build Frogophone
+
+### Hardware
+
+TODO: BERSS to write this?
+
+### Software
+
+Frogophone's software is built using Visual Studio Code's [PlatformIO IDE extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide).
+
+## Contributors
 
 #### [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS)
 Physical build, initial Arduino code.
 
-#### [Vincent Ekpanyaskun](https://github.com/vekp),
+#### [Vincent Ekpanyaskun](https://github.com/vekp)
 Multiple input detection, key change, scale change, power chord mode.
 
 ####  [Warren Kuah](https://github.com/W-Kuah)
-Triad chord mode.
+Triad chord mode, pentatonic scale.
