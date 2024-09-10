@@ -48,16 +48,13 @@ int scales[][8] = {
   {0, 3, 5, 7, 10, 12, 15, 17},  // Pentatonic
 };
 
-// Currently selected scale - 0: Major, 1: Minor, 2: Pentatonic
-int currentScale = 0;
-
 // Constants to define scales
 const int MAJOR = 0;
 const int MINOR = 1;
 const int PENTATONIC = 2;
 
-// Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
-int currentMode = 0;
+// Currently selected scale - 0: Major, 1: Minor, 2: Pentatonic
+int currentScale = MAJOR;
 
 // Number of available modes
 int numModes = 3;
@@ -66,6 +63,9 @@ int numModes = 3;
 const int SINGLE_NOTE = 0;
 const int TRIAD_CHORD = 1;
 const int POWER_CHORD = 2;
+
+// Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
+int currentMode = SINGLE_NOTE;
 
 // Define arpeggio notes for each scale
 int arpeggioNotes[][6] = {
@@ -76,6 +76,9 @@ int arpeggioNotes[][6] = {
 
 // Vector to store chord's notes for playing/ending
 std::vector<int> notes;
+
+// The constant definining global velocity
+const int G_VELOCITY = 90;
 
 void silence() {
   // Stop all currently playing notes
@@ -96,7 +99,7 @@ void playArpeggio() {
   // Play notes of the chord, with short pause between each
   for (int i : arpeggioNotes[currentScale]) {
     int note = key + i;
-    MIDI.sendNoteOn(note, 127, 1);
+    MIDI.sendNoteOn(note, G_VELOCITY, 1);
     delay(noteDuration);
     timeElapsed += noteDuration;
   }
@@ -157,7 +160,7 @@ void playOrEndNotes(int i, bool noteOn) {
   }
   // Play or end each note
   for (int note : notes) {
-    if (noteOn) MIDI.sendNoteOn(note, 127, 1);
+    if (noteOn) MIDI.sendNoteOn(note, G_VELOCITY, 1);
     else MIDI.sendNoteOff(note, 0, 1);
   } 
 }
