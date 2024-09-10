@@ -1,5 +1,7 @@
 # Frogophone
 
+*The world's most accessible, inclusive, harmonious and shreddable amphibious MIDI controller*
+
 Frogophone is a MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their two-day [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
 
 Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered by the eight buttons on the toy's hands and belly.
@@ -38,7 +40,7 @@ On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to
 To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
 ---
-![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/cea7e938-f7af-4453-bfe5-d96f46b26c94)  
+![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/654a3244-39cc-4430-bbb9-9041560e4e89)  
 *Key, scale and chord mode controlled with simultaneous button press combinations*
 
 ## Changing key, scale and mode
