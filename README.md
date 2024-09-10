@@ -32,13 +32,13 @@ Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered 
 ### Buttons
 On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to image below for button order.
 
-![Button order](https://github.com/user-attachments/assets/b0775f6c-9156-48a7-ad7b-15e903892f39)  
+![Diagram showing ordering of buttons on Frogophone](https://github.com/user-attachments/assets/b0775f6c-9156-48a7-ad7b-15e903892f39)  
 *Button order. Image source: https://leapfrog.fandom.com/wiki/Baby_Tad?file=0C0F59E0-7E8D-4824-ADF4-F2616A6DF0B5.jpeg*
 
 To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
 ---
-![Frogophone controls](https://github.com/user-attachments/assets/3d467442-fafe-4c6f-8fd6-7beb1f82d520)  
+![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/cea7e938-f7af-4453-bfe5-d96f46b26c94)  
 *Key, scale and chord mode controlled with simultaneous button press combinations*
 
 ## Changing key, scale and mode
@@ -80,4 +80,4 @@ Physical build, initial Arduino code.
 Multiple input detection, key change, scale change, power chord mode.
 
 ####  [Warren Kuah](https://github.com/W-Kuah)
-Triad chord mode, pentatonic scale.
+Triad chord generator algorithm, pentatonic scale.

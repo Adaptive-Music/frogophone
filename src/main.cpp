@@ -191,18 +191,14 @@ void setup() {
 
 
 void loop() {
-  int buttonCount = 0;
-  // Read the state of the pushbutton values
-  for (int i = 0; i < 8; i++) {
-    newState[i] = digitalRead(pins[i]) == LOW;
-    if (newState[i]) buttonCount++;
-    }
+  // Read and store the current state of the pushbutton values
+  for (int i = 0; i < 8; i++) newState[i] = digitalRead(pins[i]) == LOW;
 
   // Check for key/scale/mode change combo button presses
-  // Four buttons - toggle between major/minor scales
-  if (newState[0] && newState[2] && newState[3] && newState[5]) changeScale();
-  // Other four button combo - cycle through modes
-  else if (buttonCount > 3) changeMode();
+  // Cycle through scales
+  if (newState[0] && newState[1] && newState[3] && newState[4]) changeScale();
+  // Cycle through chord modes
+  else if (newState[1] && newState[2] && newState[4] && newState[5]) changeMode();
   // Top three buttons - raise key by semitone
   else if (newState[0] && newState[1] && newState[2]) changeKey(key + 1);
   // Raise key by octave
