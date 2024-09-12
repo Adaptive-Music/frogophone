@@ -2,9 +2,11 @@
 
 *The world's most accessible, inclusive, and versatile MIDI amphibian*
 
-Frogophone is a bespoke MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their two-day [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
+Frogophone is a bespoke MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their two-day [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program (AMBP)](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
 
-Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered by the eight buttons on the toy's hands and belly.
+The student has a special connection with this toy, helping her to overcome her disability when using it. Taking advantage of this connection, AMBP converted it to a MIDI controller to enable her to express her creativity through it. We have built on the features of the Arduino code, in the hope that it will serve in helping her to be included in ensemble settings by making it easy for her to play in tune to any song, and that the variety of possible sounds it can produce will allow how to play any genre of her choosing. 
+
+Using an Arduino Uno with a MIDI shield, Frogophone outputs MIDI signals when triggered by the eight buttons on the toy's hands and belly.
 
 ## Features
 
@@ -12,7 +14,7 @@ Using an Arduino Uno with a MIDI shield, it outputs MIDI signals when triggered 
 * Each of the eight buttons corresponds to a note in the selected scale, initially set to C major (C4 - C5).
 * Pressing down on a button sends a **NOTE ON** MIDI message, with a velocity of 90, on channel 1.
 * Releasing the button sends a corresponding **NOTE OFF** with velocity 0.
-* Allows for harmonic output with multiple simultaneous button presses.
+* Allows for polyphonic output in response to multiple simultaneous button presses.
 
 ### Key and Scale Selection
 * The key can be raised or lowered, either by semitone or by octave, using special 3-button combinations as outlined below.
@@ -79,7 +81,7 @@ Frogophone's software is built using Visual Studio Code's [PlatformIO IDE extens
 Physical build, initial Arduino code.
 
 #### [Vincent Ekpanyaskun](https://github.com/vekp)
-Multiple input detection, key change, scale change, power chord mode.
+Multiple input detection, polyphonic output, key change, scale change, power chord mode.
 
 ####  [Warren Kuah](https://github.com/W-Kuah)
-Triad chord generator algorithm, pentatonic scale.
+Triad chord generator algorithm, pentatonic scale, code optimisation.
