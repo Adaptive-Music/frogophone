@@ -78,7 +78,7 @@ int arpeggioNotes[][6] = {
 std::vector<int> notes;
 
 // The constant definining global velocity
-const int G_VELOCITY = 90;
+const int G_VELOCITY = 64;
 
 void silence() {
   // Stop all currently playing notes
