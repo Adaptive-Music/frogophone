@@ -12,7 +12,7 @@ Using an Arduino Uno with a MIDI shield, Frogophone outputs MIDI signals when tr
 
 ### MIDI Output
 * Each of the eight buttons corresponds to a note in the selected scale, initially set to C major (C4 - C5).
-* Pressing down on a button sends a **NOTE ON** MIDI message, with a velocity of 90, on channel 1.
+* Pressing down on a button sends a **NOTE ON** MIDI message, with a velocity of 64, on channel 1.
 * Releasing the button sends a corresponding **NOTE OFF** with velocity 0.
 * Allows for polyphonic output in response to multiple simultaneous button presses.
 
