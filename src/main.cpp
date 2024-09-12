@@ -53,7 +53,7 @@ const int MAJOR = 0;
 const int MINOR = 1;
 const int PENTATONIC = 2;
 
-// Currently selected scale - 0: Major, 1: Minor, 2: Pentatonic
+// Currently selected scale
 int currentScale = MAJOR;
 
 // Number of available modes
@@ -64,7 +64,7 @@ const int SINGLE_NOTE = 0;
 const int TRIAD_CHORD = 1;
 const int POWER_CHORD = 2;
 
-// Define current mode - 0: Single note, 1: Power chord, 2: Triad chord
+// Define current mode
 int currentMode = SINGLE_NOTE;
 
 // Define arpeggio notes for each scale
@@ -117,7 +117,7 @@ void playArpeggio() {
 
 void changeKey(int newKey) {
   // Check if key within valid range
-  if (newKey < 12 || newKey > 111) return;
+  if (newKey < 12 || newKey > 110) return;
   // Store the new key
   key = newKey;
   // Play arpeggio to indicate success
