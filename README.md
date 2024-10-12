@@ -44,7 +44,7 @@ On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to
 To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
 ---
-![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/654a3244-39cc-4430-bbb9-9041560e4e89)  
+![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/5a53c64d-31f1-4138-bf9b-6a6f6e494d0b)  
 *Key, scale and chord mode controlled with simultaneous button press combinations*
 
 ## Changing key, scale and mode
