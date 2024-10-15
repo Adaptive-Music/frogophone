@@ -2,7 +2,7 @@
 
 *The most accessible, inclusive, and versatile MIDI amphibian*
 
-Frogophone is a bespoke MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) soft toy, created by [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS) at their two-day [2024 Hackathon](https://www.instagram.com/p/C-mOJVxqIss/) for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program (AMBP)](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
+Frogophone is a bespoke MIDI instrument made from a [LeapFrog Baby Tad](https://leapfrog.fandom.com/wiki/Baby_Tad) (2003-2006 version) soft toy, created for one of the students of Melbourne Youth Orchestras and the University of Melbourne's [Adaptive Music Bridging Program (AMBP)](https://myo.org.au/programs/ensemble-program/adaptive-music-bridging-program/).
 
 The student has a special connection with this toy, helping her to overcome her disability when using it. Taking advantage of this connection, AMBP converted it to a MIDI controller to enable her to express her creativity through it. We have built on the features of the Arduino code, in the hope that it will serve in helping her to be included in ensemble settings by making it easy for her to play in tune to any song, and that the variety of possible sounds it can produce will allow how to play any genre of her choosing. 
 
@@ -39,7 +39,7 @@ Frogophone has two USB cables. The grey cable outputs MIDI commands from the fro
 On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to image below for button order.
 
 ![Diagram showing ordering of buttons on Frogophone](https://github.com/user-attachments/assets/b0775f6c-9156-48a7-ad7b-15e903892f39)  
-*Button order. Image source: https://leapfrog.fandom.com/wiki/Baby_Tad?file=0C0F59E0-7E8D-4824-ADF4-F2616A6DF0B5.jpeg*
+*Button order. Image source: https://leapfrog.fandom.com/wiki/Baby_Tad*
 
 To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
@@ -47,40 +47,31 @@ To play the C Major scale ascending, press the buttons in order from 1 to 8.
 ![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/5a53c64d-31f1-4138-bf9b-6a6f6e494d0b)  
 *Key, scale and chord mode controlled with simultaneous button press combinations*
 
-## Changing key, scale and mode
+### Changing key, scale and mode
 
 Key, scale and mode can be changed as follows. For successful key and scale changes, this is signalled with an arpeggiated chord in the new key, played for one second, while chord mode changes are signalled by the base note/chord being played for one second.
 
 The special three/four button combinations are intentionally difficult to press, and intended to be used by the user's carer. This is to minimise the chance of the user accidentally triggering an unintended key/scale/mode change.
 
-### Key
+#### Key
 
 To raise the key by one semitone, press the three upper buttons 1, 2 and 3 simultaneously. To lower it by one semitone, press the lower buttons 4, 5 and 6 simultaneously. Keep buttons held down for multiple steps.
 
 To raise the key by one octave, press buttons 2, 4 and 6 simultaneously. To lower it by one octave, press the buttons 1, 3 and 5 simultaneously.
 
-### Scale
+#### Scale
 
 The scale can be cycled between major, minor, and pentatonic scales by pressing buttons the four buttons 1, 3, 4 and 6 at once.
 
-### Mode
+#### Mode
 
 The mode can be cycled between single note, triad chord, and power chord mode by pressing any other four button combination at the same time. Each mode change is accompanied by the base note/chord being played for one second. Note: Triad chord mode is not valid when pentatonic scale is selected, so it is skipped.
 
-## How to build Frogophone
-
-### Hardware
-
-TODO: BERSS to write this?
-
-### Software
+## Software
 
 Frogophone's software is built using Visual Studio Code's [PlatformIO IDE extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide).
 
 ## Contributors
-
-#### [The Biomedical Engineering RMIT Student Society (BERSS)](https://rusu.rmit.edu.au/Clubs/BERSS)
-Physical build, initial Arduino code.
 
 #### [Vincent Ekpanyaskun](https://github.com/vekp)
 Multiple input detection, polyphonic output, key change, scale change, power chord mode.
