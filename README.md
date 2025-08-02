@@ -35,7 +35,7 @@ Using an Arduino Uno with a MIDI shield, Frogophone outputs MIDI signals when tr
 ### Connecting Frogophone
 Frogophone has two USB cables.
 * The grey cable outputs MIDI commands from the frog, and must be connected to a computer/phone/tablet running a MIDI synthesiser application. Recommended applications are:
-   * [GarageBand](apple.com/garageband/) (iOS/MacOS)
+   * GarageBand ([iOS](https://www.apple.com/ios/garageband/)/[MacOS](https://www.apple.com/au/mac/garageband/))
    * [ThumbJam](https://thumbjam.com/) (iOS)
    * [midi.city](https://midi.city/) (web app, not supported by iOS) 
 * The black cable supplies power to the frog, and can be connected to either the same device or any other source of power. 
