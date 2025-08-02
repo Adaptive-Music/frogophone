@@ -32,10 +32,17 @@ Using an Arduino Uno with a MIDI shield, Frogophone outputs MIDI signals when tr
 * Frogophone's chord mode makes playing chords more accessible for people with disabilities who may struggle with applying both the theoretical knowledge and physical coordination required to perform a chord, as the software works out the correct notes and plays them all at once, with just a single button press.
 
 ## Instructions
+### Connecting Frogophone
+Frogophone has two USB cables.
+* The grey cable outputs MIDI commands from the frog, and must be connected to a computer/phone/tablet running a MIDI synthesiser application. Recommended applications are:
+   * [GarageBand](apple.com/garageband/) (iOS/MacOS)
+   * [ThumbJam](https://thumbjam.com/) (iOS)
+   * [midi.city](https://midi.city/) (web app, not supported by iOS) 
+* The black cable supplies power to the frog, and can be connected to either the same device or any other source of power. 
+
+---
 
 ### Buttons
-Frogophone has two USB cables. The grey cable outputs MIDI commands from the frog, and must be connected to a computer/phone/tablet running a MIDI synthesiser application. The black one supplies power to the frog, and can be connected to either the same device or any other source of power. 
-
 On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to image below for button order.
 
 ![Diagram showing ordering of buttons on Frogophone](https://github.com/user-attachments/assets/b0775f6c-9156-48a7-ad7b-15e903892f39)  
@@ -44,10 +51,10 @@ On startup, Frogophone is set to play the C Major scale, from C4 to C5. Refer to
 To play the C Major scale ascending, press the buttons in order from 1 to 8.
 
 ---
-![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/5a53c64d-31f1-4138-bf9b-6a6f6e494d0b)  
-*Key, scale and chord mode controlled with simultaneous button press combinations*
 
 ### Changing key, scale and mode
+![Diagram showing button combinations for Frogophone controls](https://github.com/user-attachments/assets/5a53c64d-31f1-4138-bf9b-6a6f6e494d0b)  
+*Key, scale and chord mode controlled with simultaneous button press combinations*
 
 Key, scale and mode can be changed as follows. For successful key and scale changes, this is signalled with an arpeggiated chord in the new key, played for one second, while chord mode changes are signalled by the base note/chord being played for one second.
 
