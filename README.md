@@ -74,6 +74,12 @@ The scale can be cycled between major, minor, and pentatonic scales by pressing 
 
 The mode can be cycled between single note, triad chord, and power chord mode by pressing any other four button combination at the same time. Each mode change is accompanied by the base note/chord being played for one second. Note: Triad chord mode is not valid when pentatonic scale is selected, so it is skipped.
 
+## Videos
+
+[Twinkle Twinkle Little Star](https://youtu.be/wUW1MyKE00Y?si=Kusd5qbuiYmyZUmV) - Single note mode  
+[Eye of the Tiger](https://youtu.be/uzeKxF4UgNY?si=a6zXbeZUlibSbD-G) - Power chord mode  
+[Lean on Me](https://youtu.be/weRtvOycZlI?si=tsTNvsUgQ69HcXez) - Triad chord mode
+
 ## Software
 
 Frogophone's software is built using Visual Studio Code's [PlatformIO IDE extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide).
